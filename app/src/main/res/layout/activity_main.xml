@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mainViewModel"
+            type="com.example.basketballscore.MainViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:id="@+id/center_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageButton
+                android:id="@+id/resetScoreButton"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:onClick="@{() -> mainViewModel.resetScore()"
+                android:src="@drawable/ic_baseline_settings_backup_restore_24"
+                android:padding="16dp"/>
+
+
+            <ImageView
+                android:id="@+id/basketballIV"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:src="@drawable/basketball" />
+
+            <ImageButton
+                android:id="@+id/resultsButton"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/ic_baseline_arrow_forward_24"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/localTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:text="Local"
+            android:textColor="#000000"
+            android:textSize="32sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/visitorsTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingBottom="16dp"
+            android:paddingEnd="16dp"
+            android:text="Visitante"
+            android:textColor="#000000"
+            android:textSize="32sp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/center_layout"
+            android:layout_below="@id/localTV"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/localMinusBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> mainViewModel.decreaseLocalScore()}"
+                android:text="-1"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/localScoreTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="72sp"
+                tools:text="62"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/localOnePointBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> mainViewModel.addPointsToScore(1, true)}"
+                    android:text="+1"
+                    android:textSize="24sp"/>
+
+                <Button
+                    android:id="@+id/localTwoPointsBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> mainViewModel.addPointsToScore(2, true)}"
+                    android:text="+2"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/visitorsTV"
+            android:layout_below="@id/center_layout"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/visitorMinusBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> mainViewModel.decreaseVisitorScore()}"
+                android:text="-1"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/visitorScoreTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="72sp"
+                tools:text="62"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/visitorOnePointBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> mainViewModel.addPointsToScore(1, false)}"
+                    android:text="+1"
+                    android:textSize="24sp"/>
+
+                <Button
+                    android:id="@+id/visitorTwoPointsBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> mainViewModel.addPointsToScore(2, false)}"
+                    android:text="+2"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+</layout>
